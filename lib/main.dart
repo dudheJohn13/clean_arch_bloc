@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_clean_architecture/core/di/injection.dart';
+import 'package:flutter_clean_architecture/core/router/router.dart';
 import 'package:flutter_clean_architecture/features/user/presentation/screens/user_screen.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   configureDependencies();
   runApp(UserScreen());
@@ -11,16 +12,23 @@ void main() async{
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      routerConfig: router,
     );
+
+    // return MaterialApp(
+    //   title: 'Flutter Demo',
+    //   theme: ThemeData(
+    //     colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+    //   ),
+    //   home: const MyHomePage(title: 'Flutter Demo Home Page'),
+    // );
   }
 }
 
@@ -44,7 +52,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,

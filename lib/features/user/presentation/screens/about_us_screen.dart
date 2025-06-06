@@ -4,11 +4,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_clean_architecture/features/user/presentation/bloc/user_bloc.dart';
 import 'package:flutter_clean_architecture/features/user/presentation/bloc/user_event.dart';
 import 'package:flutter_clean_architecture/features/user/presentation/bloc/user_state.dart';
-import 'package:go_router/go_router.dart';
 
 import '../../../../core/di/injection.dart';
 
-class UserScreen extends StatelessWidget {
+class AboutUsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -24,12 +23,8 @@ class UserScreen extends StatelessWidget {
                 return ListView.builder(
                   itemCount: users.length,
                   itemBuilder:
-                      (context, index) => ListTile(
-                        title: Text(users[index].name),
-                        onTap: () {
-                          context.push('/about');
-                        },
-                      ),
+                      (context, index) =>
+                          ListTile(title: Text(users[index].name)),
                 );
               },
               error: (message) {
