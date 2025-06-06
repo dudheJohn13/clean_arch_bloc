@@ -10,14 +10,29 @@ import '../../../../core/di/injection.dart';
 class UserScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(create: (_) =>
-    getIt<UserBloc>()
-      ..add(FetchUsers()),
+    return BlocProvider(
+      create: (_) => getIt<UserBloc>()..add(FetchUsers()),
       child: Scaffold(
-          appBar: AppBar(title: const Text('Users')),
-          body: BlocBuilder<UserBloc, UserState>(
-            builder: (context, state) {
-              if (state is UserLoading) {
+        appBar: AppBar(title: const Text('Users')),
+        body: BlocBuilder<UserBloc, UserState>(
+          builder: (context, state) {
+            state.when(
+              initial: () => const Center(child: CircularProgressIndicator()),
+              loading: () => const Center(child: CircularProgressIndicator()),
+              loaded: (users) {
+                return ListView.builder(
+                  itemCount: users.length,
+                  itemBuilder:
+                      (context, index) =>
+                          ListTile(title: Text(users[index].name)),
+                );
+              },
+              error: (message) {
+                return Center(child: Text(message));
+              },
+            );
+
+            /* if (state is UserLoading) {
                 return const Center(child: CircularProgressIndicator());
               } else if (state is UserLoaded) {
                 return ListView.builder(
@@ -29,13 +44,12 @@ class UserScreen extends StatelessWidget {
                 );
               } else if (state is UserError) {
                 return Center(child: Text(state.message));
-              }
+              }*/
 
-              return const SizedBox();
-            },
-          )
+            return const SizedBox();
+          },
+        ),
       ),
     );
   }
-
 }
