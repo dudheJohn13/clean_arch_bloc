@@ -5,7 +5,6 @@ import '../../features/user/presentation/screens/about_us_screen.dart';
 
 final GoRouter router = GoRouter(
   initialLocation: '/home',
-  redirect: ,
   routes: [
     GoRoute(
       name: '/signIn',
@@ -35,9 +34,8 @@ final GoRouter router = GoRouter(
 
     GoRoute(path: '/dashboard',
         redirect: (context, state) {
-       final isLoggedIn = shared prefrence login to check user loggedIn;
-       return isLoggedIn ? null :'/sigIn';
-
+       // final isLoggedIn = ;
+       // return isLoggedIn ? null :'/sigIn';
         },
         builder: (context, state) => AboutUsScreen()),
   ],
