@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_clean_architecture/core/di/injection.dart';
 import 'package:flutter_clean_architecture/core/router/router.dart';
 import 'package:flutter_clean_architecture/core/theme/AppTheme.dart';
+import 'package:flutter_clean_architecture/core/utils/storage_util.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() async {
@@ -45,6 +46,12 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+
+    StorageUtil.write("token","daflasdjflkajldfjalkdfjlakjdf");
+    StorageUtil.read("token");
+    StorageUtil.clear();
+    StorageUtil.remove("token");
+
 
     return Scaffold(
       appBar: AppBar(

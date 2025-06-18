@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_clean_architecture/features/user/presentation/bloc/timer_cubit.dart';
 import 'package:flutter_clean_architecture/features/user/presentation/bloc/user_bloc.dart';
 import 'package:flutter_clean_architecture/features/user/presentation/bloc/user_event.dart';
 import 'package:flutter_clean_architecture/features/user/presentation/bloc/user_state.dart';
@@ -28,7 +29,11 @@ class AboutUsScreen extends StatelessWidget {
                 );
               },
               error: (message) {
+                context.read<TimerCubit>().increment();
+
                 return Center(child: Text(message));
+
+
               },
             );
 
