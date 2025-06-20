@@ -11,28 +11,28 @@ class ProductScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final productAsync = ref.watch(productNotifierProvider);
 
-    ref.listen<AsyncValue>(productNotifierProvider, (previous,next){
-
-      next.whenOrNull(
-        data: (state){
-
-          otpSent: () {
-            // navigate to different screen
-          };
-
-          error : () {
-
-          };
-
-
-        },
-        error: (error, stacktrace){
-          handleError();
-          only for snack bar / dialog
-        }
-      );
-
-    });
+    // ref.listen<AsyncValue>(productNotifierProvider, (previous,next){
+    //
+    //   next.whenOrNull(
+    //     data: (state){
+    //
+    //       otpSent: () {
+    //         // navigate to different screen
+    //       };
+    //
+    //       error : () {
+    //
+    //       };
+    //
+    //
+    //     },
+    //     error: (error, stacktrace){
+    //       handleError();
+    //       only for snack bar / dialog
+    //     }
+    //   );
+    //
+    // });
 
 
 

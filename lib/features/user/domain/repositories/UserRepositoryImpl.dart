@@ -1,14 +1,20 @@
 
 
+import 'package:flutter_clean_architecture/core/localdb/DBHelper.dart';
 import 'package:flutter_clean_architecture/features/user/data/datasources/user_remote_data_source.dart';
 import 'package:flutter_clean_architecture/features/user/data/models/user_model.dart';
 import 'package:flutter_clean_architecture/features/user/data/repositories/user_repository.dart';
+import 'package:flutter_clean_architecture/features/user/domain/dao/notesDao.dart';
+import 'package:flutter_clean_architecture/features/user/domain/dao/userDao.dart';
 import 'package:injectable/injectable.dart';
 
 @LazySingleton(as : UserRepository)
 class UserRepositoryImpl implements UserRepository{
   final UserRemoteDataSource dataSource;
   // final UserLocalDataSource userLocalDataSource;
+
+
+
 
   UserRepositoryImpl(this.dataSource);
 
